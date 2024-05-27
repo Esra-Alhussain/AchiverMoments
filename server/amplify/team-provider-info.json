@@ -1,0 +1,20 @@
+{
+  "devenv": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-achivermoments-devenv-f14ad-authRole",
+      "UnauthRoleArn": "arn:aws:iam::471112779927:role/amplify-achivermoments-devenv-f14ad-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::471112779927:role/amplify-achivermoments-devenv-f14ad-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-achivermoments-devenv-f14ad-deployment",
+      "UnauthRoleName": "amplify-achivermoments-devenv-f14ad-unauthRole",
+      "StackName": "amplify-achivermoments-devenv-f14ad",
+      "StackId": "arn:aws:cloudformation:us-east-1:471112779927:stack/amplify-achivermoments-devenv-f14ad/3a0cb720-1be4-11ef-93cd-0afff9d23c3b",
+      "AmplifyAppId": "d2chzvptjlzr27"
+    },
+    "categories": {
+      "auth": {
+        "achivermomentsbdccf40a": {}
+      }
+    }
+  }
+}
