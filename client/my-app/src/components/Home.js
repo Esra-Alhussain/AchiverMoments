@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation, Auth } from 'aws-amplify';
+import { generateClient } from 'aws-amplify/api'; // Import generateClient
 import { listAchievements } from '../graphql/queries';
 import { Link } from 'react-router-dom';
 import SignOutButton from './SignOutButton';
+
+const client = generateClient();
 
 function Home() {
   const [achievements, setAchievements] = useState([]);
@@ -13,10 +15,10 @@ function Home() {
 
   async function fetchAchievements() {
     try {
-      const achievementData = await API.graphql(graphqlOperation(listAchievements));
+      const achievementData = await client.graphql({ query: listAchievements });
       setAchievements(achievementData.data.listAchievements.items);
     } catch (err) {
-      console.log('error fetching achievements');
+      console.log('error fetching achievements', err);
     }
   }
 

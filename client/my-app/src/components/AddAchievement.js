@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { createAchievement } from '../graphql/mutations';
-import { Auth, API, graphqlOperation } from 'aws-amplify';
+import { generateClient } from 'aws-amplify/api'; // Import generateClient
+import { fetchAuthSession } from 'aws-amplify/auth';
 
+const client = generateClient(); // Generate client
 
 function AddAchievement() {
   const [achievement, setAchievement] = useState('');
@@ -9,10 +11,10 @@ function AddAchievement() {
   async function handleAddAchievement() {
     if (!achievement) return;
     try {
-      const user = await Auth.currentAuthenticatedUser();
+      const user = await fetchAuthSession.currentAuthenticatedUser();
       const username = user.username;
       const newAchievement = { content: achievement, username };
-      await API.graphql(graphqlOperation(createAchievement, { input: newAchievement }));
+      await client.graphql({ query: createAchievement, variables: { input: newAchievement } }); // Use client.graphql
       setAchievement('');
       window.location.href = '/';
     } catch (err) {

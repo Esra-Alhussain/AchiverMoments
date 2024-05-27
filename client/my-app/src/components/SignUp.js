@@ -1,9 +1,17 @@
 import React from 'react';
-import { AmplifySignUp } from '@aws-amplify/ui-react';
-
+import { Authenticator } from '@aws-amplify/ui-react';
 
 function SignUp() {
-  return <AmplifySignUp />;
+  return (
+    <Authenticator>
+      {({ signOut, user }) => (
+        <main>
+          <h1>Hello {user.username}</h1>
+          <button onClick={signOut}>Sign out</button>
+        </main>
+      )}
+    </Authenticator>
+  );
 }
 
 export default SignUp;
